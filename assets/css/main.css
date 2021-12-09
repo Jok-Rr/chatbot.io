@@ -151,12 +151,20 @@ body {
     width: 100%;
     position: fixed;
     bottom: 0%;
-    padding: 10px 10px;
+    padding: 20px 105px;
     background: #1E2428;
 }
 
 .input-group {
-    justify-content: center;
+    align-items: center !important;
+    background-color: #33383b!important;
+    border-radius: 50px!important;
+    justify-content: space-between!important;
+}
+
+.submit{
+    margin: 0 25px 0 0 !important;
+    color: white;
 }
 
 .input {
@@ -164,10 +172,12 @@ body {
     width: 90%;
     padding: 9px 12px 11px;
     margin: 5px 10px;
-    background-color: #33383b;
-    border: 1px solid #33383b;
+    background-color: transparent;
+    border: none;
     border-radius: 50px !important;
     outline: none;
+    height: 35px;
+    color: white;
 }
 
 
