@@ -103,10 +103,10 @@ body {
     padding: 10px 15px;
     line-height: 26px;
     font-size: 16px;
-    border-radius: 7px;
+    border-radius: 0px 7px 7px 7px;
     display: inline-block;
     position: relative;
-    background: #262d31;
+    background: rgb(38 45 49);
 }
 
 .message-me {
@@ -134,12 +134,28 @@ body {
     height: 13px;
 }
 
+._2nrYb {
+    color: rgb(38 45 49);
+}
+._2nrYb {
+    position: absolute;
+    top: 47px;
+    left: -8px;
+    z-index: 100;
+    display: block;
+    width: 8px;
+    height: 13px;
+}
 
 
 .my-message-container {
     text-align: right;
     position: relative;
 
+}
+
+.bot-message-container{
+    position: relative;
 }
 
 .other-message {
@@ -153,6 +169,7 @@ body {
     bottom: 0%;
     padding: 20px 105px;
     background: #1E2428;
+    z-index: 100;
 }
 
 .input-group {

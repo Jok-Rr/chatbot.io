@@ -64,6 +64,7 @@ class Message {
         }
 
         console.log(values);
+
         //display old message
         for (const [key, value] of Object.entries(values)) {
 
@@ -93,7 +94,7 @@ class Message {
                             <span class="message-data-time"> ${value.time}</span>
                 
                         </div>
-                
+                        <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
                         <div class="message">${value.content}</div>
                         </li>`;
 
@@ -121,7 +122,7 @@ class Message {
                                 <span class="message-data-time"> ${value.time}</span>
                     
                             </div>
-                    
+                            <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
                             <div class="message">
                             <figure style="height:100px">
                                 <img src="${value.picture}" width=auto height=100%>
@@ -142,6 +143,7 @@ class Message {
                     <span class="message-data-time"> ${value.time}</span>
         
                 </div>
+                <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
                     <div class="message">
                     <img src="http://openweathermap.org/img/wn/${value.picture}@2x.png" alt="">
                     <p style="margin:0px">Metéo: ${value.weather}</p>
@@ -205,7 +207,7 @@ class Message {
             <span class="message-data-time"> ${this.dateTime}</span>
 
         </div>
-
+        <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
         <div class="message">${contentMsg}</div>
         </li>`;
 
@@ -231,6 +233,8 @@ class Message {
             fetch('https://api.thedogapi.com/v1/images/search')
                 .then(res => res.json())
                 .then(data => {
+
+
                     console.log(data);
                     this.chatHistory.innerHTML += `
             <li class="bot-message-container">
@@ -239,7 +243,7 @@ class Message {
                 <span class="message-data-time">${nameBot} |</span>
                 <span class="message-data-time"> ${this.dateTime}</span>
             </div>
-    
+            <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>        
             <div class="message" style="height:300px"><img src="${data[0].url}" width=auto height=100% alt=""></div>
             </li>`;
 
@@ -279,7 +283,7 @@ class Message {
                         <span class="message-data-time"> ${this.dateTime}</span>
             
                     </div>
-            
+                    <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
                     <div class="message">
                     <figure style="height:100px">
                          <img src="${large}" width=auto height=100%>
@@ -317,25 +321,21 @@ class Message {
                 .then(res => res.json())
                 .then(data => {
 
-                    console.log(data);
-
-                    let { icon, description } = data.weather[0]
-                    let { name, base, coord: { lat, lon }, main: { humidity, temp, feels_like, temp_max, temp_min }, wind: { speed } } = data;
-
-                    console.log(name);
-                    console.log(icon);
-
                     if (data['cod'] == '404') {
                         this.sendMessageBot(`⚠️⚠️🛑 Attention la ville que vous avez rentré est incorrect 🛑⚠️⚠️`, avatarUrl, nameBot);
                     } else {
+                        let { icon, description } = data.weather[0]
+                        let { name, base, coord: { lat, lon }, main: { humidity, temp, feels_like, temp_max, temp_min }, wind: { speed } } = data;
+
                         this.chatHistory.innerHTML +=
                             `<li class="bot-message-container">
                     <div class="message-data">
                         <img src="assets/img/${avatarUrl}" alt="avatar">
                         <span class="message-data-time">${nameBot} |</span>
                         <span class="message-data-time"> ${this.dateTime}</span>
-            
+                        
                     </div>
+                    <span data-testid="tail-in" data-icon="tail-in" class="_2nrYb"><svg viewBox="0 0 8 13" width="8" height="13" class=""><path opacity=".13" fill="#0000000" d="M1.533 3.568L8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path><path fill="currentColor" d="M1.533 2.568L8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"></path></svg></span>
                         <div class="message">
                         <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="">
                         <p style="margin:0px">Metéo: ${description}</p>
